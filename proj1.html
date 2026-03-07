@@ -11,21 +11,35 @@
 </head>
 <body>
     <h1 class='main-heading'>👨‍💼Emplyoee Record System</h1>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Tables</a>
+    <nav class="navbar navbar-expand-lg">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-            <a class="nav-link active" href="#">Employee <span class="sr-only">(current)</span></a>
-            <a class="nav-link" href="#">Department</a>
-            <a class="nav-link" href="#">Salary</a>
-            <a class="nav-link" href="#">Designation</a>
-            <a class="nav-link" href="#">Attendance</a>
+            <a class="nav-link active" href="#" onclick="showTab('employee')">Employee <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#" onclick="showTab('department')">Department</a>
+            <a class="nav-link" href="#" onclick="showTab('salary')">Salary</a>
+            <a class="nav-link" href="#" onclick="showTab('designation')">Designation</a>
+            <a class="nav-link" href="#" onclick="showTab('attendance')">Attendance</a>
             </div>
         </div>
     </nav>
-    
+    <div id='employee' class='tab-content'>
+        <h2>Employee</h2>
+    </div>
+    <div id='department' class='tab-content' >
+        <h2>Department</h2>
+    </div>
+    <div id='salary' class='tab-content'>
+        <h2>Salary</h2>
+    </div>
+    <div id='designation' class='tab-content'>
+        <h2>Designation</h2>
+    </div>
+    <div id='attendance' class='tab-content'>
+        <h2>Attendance</h2>
+    </div>
 </body>
+
 
