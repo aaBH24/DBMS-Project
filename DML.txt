@@ -1,0 +1,114 @@
+====================================================
+EMPLOYEE MANAGEMENT SYSTEM - PARAMETERIZED DML SQL
+====================================================
+
+
+-------------------------
+INSERT QUERIES
+-------------------------
+
+INSERT INTO Department (dept_id, dept_name, location)
+VALUES (?, ?, ?);
+
+INSERT INTO JobDesc (job_id, job_title, min_salary, max_salary)
+VALUES (?, ?, ?, ?);
+
+INSERT INTO Employee
+(emp_id, first_name, last_name, gender, dob, email, phone, hired_date, dept_id, job_id, manager_id)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+INSERT INTO Salary
+(salary_id, emp_id, basic_salary, allowances, deductions, pay_date)
+VALUES (?, ?, ?, ?, ?, ?);
+
+INSERT INTO Attendance
+(attendance_id, emp_id, date, status)
+VALUES (?, ?, ?, ?);
+
+
+-------------------------
+SELECT QUERIES
+-------------------------
+
+SELECT *
+FROM Employee
+WHERE emp_id = ?;
+
+SELECT *
+FROM Employee
+WHERE dept_id = ?;
+
+SELECT *
+FROM Salary
+WHERE emp_id = ?;
+
+SELECT *
+FROM Attendance
+WHERE date = ?;
+
+SELECT e.emp_id, e.first_name, e.last_name, d.dept_name, j.job_title
+FROM Employee e
+JOIN Department d ON e.dept_id = d.dept_id
+JOIN JobDesc j ON e.job_id = j.job_id
+WHERE e.emp_id = ?;
+
+
+-------------------------
+UPDATE QUERIES
+-------------------------
+
+UPDATE Employee
+SET first_name = ?, 
+    last_name = ?, 
+    gender = ?, 
+    dob = ?, 
+    email = ?, 
+    phone = ?, 
+    hired_date = ?, 
+    dept_id = ?, 
+    job_id = ?, 
+    manager_id = ?
+WHERE emp_id = ?;
+
+UPDATE Department
+SET dept_name = ?, 
+    location = ?
+WHERE dept_id = ?;
+
+UPDATE JobDesc
+SET job_title = ?, 
+    min_salary = ?, 
+    max_salary = ?
+WHERE job_id = ?;
+
+UPDATE Salary
+SET basic_salary = ?, 
+    allowances = ?, 
+    deductions = ?, 
+    pay_date = ?
+WHERE salary_id = ?;
+
+UPDATE Attendance
+SET date = ?, 
+    status = ?
+WHERE attendance_id = ?;
+
+
+-------------------------
+DELETE QUERIES
+-------------------------
+
+DELETE FROM Employee
+WHERE emp_id = ?;
+
+DELETE FROM Department
+WHERE dept_id = ?;
+
+DELETE FROM JobDesc
+WHERE job_id = ?;
+
+DELETE FROM Salary
+WHERE salary_id = ?;
+
+DELETE FROM Attendance
+WHERE attendance_id = ?;

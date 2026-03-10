@@ -1,0 +1,143 @@
+-- ============================================
+-- EMPLOYEE MANAGEMENT SYSTEM DATABASE SCHEMA
+-- ============================================
+
+-- Department Table
+CREATE TABLE Department (
+    dept_id INT PRIMARY KEY,
+    dept_name VARCHAR(50),
+    location VARCHAR(50)
+);
+
+-- Job Description Table
+CREATE TABLE JobDesc (
+    job_id INT PRIMARY KEY,
+    job_title VARCHAR(50),
+    min_salary DECIMAL(10,2),
+    max_salary DECIMAL(10,2)
+);
+
+-- Employee Table
+CREATE TABLE Employee (
+    emp_id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    gender VARCHAR(10),
+    dob DATE,
+    email VARCHAR(100),
+    phone VARCHAR(15),
+    hired_date DATE,
+    dept_id INT,
+    job_id INT,
+    manager_id INT,
+
+    FOREIGN KEY (dept_id) REFERENCES Department(dept_id),
+    FOREIGN KEY (job_id) REFERENCES JobDesc(job_id),
+    FOREIGN KEY (manager_id) REFERENCES Employee(emp_id)
+);
+
+-- Salary Table
+CREATE TABLE Salary (
+    salary_id INT PRIMARY KEY,
+    emp_id INT,
+    basic_salary DECIMAL(10,2),
+    allowances DECIMAL(10,2),
+    deductions DECIMAL(10,2),
+    pay_date DATE,
+
+    FOREIGN KEY (emp_id) REFERENCES Employee(emp_id)
+);
+
+-- Attendance Table
+CREATE TABLE Attendance (
+    attendance_id INT PRIMARY KEY,
+    emp_id INT,
+    date DATE,
+    status VARCHAR(20),
+
+    FOREIGN KEY (emp_id) REFERENCES Employee(emp_id)
+);
+
+
+-- ============================================
+-- SAMPLE PARAMETERIZED INSERT QUERIES
+-- ============================================
+
+INSERT INTO Department (dept_id, dept_name, location)
+VALUES (?, ?, ?);
+
+INSERT INTO JobDesc (job_id, job_title, min_salary, max_salary)
+VALUES (?, ?, ?, ?);
+
+INSERT INTO Employee
+(emp_id, first_name, last_name, gender, dob, email, phone, hired_date, dept_id, job_id, manager_id)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+INSERT INTO Salary
+(salary_id, emp_id, basic_salary, allowances, deductions, pay_date)
+VALUES (?, ?, ?, ?, ?, ?);
+
+INSERT INTO Attendance
+(attendance_id, emp_id, date, status)
+VALUES (?, ?, ?, ?);
+
+
+-- ============================================
+-- PARAMETERIZED UPDATE QUERIES
+-- ============================================
+
+UPDATE Employee
+SET first_name = ?, 
+    last_name = ?, 
+    gender = ?, 
+    dob = ?, 
+    email = ?, 
+    phone = ?, 
+    hired_date = ?, 
+    dept_id = ?, 
+    job_id = ?, 
+    manager_id = ?
+WHERE emp_id = ?;
+
+UPDATE Department
+SET dept_name = ?, 
+    location = ?
+WHERE dept_id = ?;
+
+UPDATE JobDesc
+SET job_title = ?, 
+    min_salary = ?, 
+    max_salary = ?
+WHERE job_id = ?;
+
+UPDATE Salary
+SET basic_salary = ?, 
+    allowances = ?, 
+    deductions = ?, 
+    pay_date = ?
+WHERE salary_id = ?;
+
+UPDATE Attendance
+SET date = ?, 
+    status = ?
+WHERE attendance_id = ?;
+
+
+-- ============================================
+-- PARAMETERIZED DELETE QUERIES
+-- ============================================
+
+DELETE FROM Employee
+WHERE emp_id = ?;
+
+DELETE FROM Department
+WHERE dept_id = ?;
+
+DELETE FROM JobDesc
+WHERE job_id = ?;
+
+DELETE FROM Salary
+WHERE salary_id = ?;
+
+DELETE FROM Attendance
+WHERE attendance_id = ?;

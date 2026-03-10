@@ -1,0 +1,103 @@
+-- ============================================
+-- EMPLOYEE MANAGEMENT SYSTEM - DQL
+-- ============================================
+
+-----------------------
+-- BASIC SELECT
+-----------------------
+
+SELECT * FROM Department;
+
+SELECT * FROM JobDesc;
+
+SELECT * FROM Employee;
+
+SELECT * FROM Salary;
+
+SELECT * FROM Attendance;
+
+
+-----------------------
+-- PARAMETERIZED SELECT
+-----------------------
+
+SELECT *
+FROM Employee
+WHERE emp_id = ?;
+
+SELECT *
+FROM Employee
+WHERE dept_id = ?;
+
+SELECT *
+FROM Salary
+WHERE emp_id = ?;
+
+SELECT *
+FROM Attendance
+WHERE emp_id = ?;
+
+SELECT *
+FROM Attendance
+WHERE date = ?;
+
+
+-----------------------
+-- JOIN QUERIES
+-----------------------
+
+SELECT e.emp_id, e.first_name, e.last_name, d.dept_name
+FROM Employee e
+JOIN Department d ON e.dept_id = d.dept_id;
+
+SELECT e.emp_id, e.first_name, j.job_title
+FROM Employee e
+JOIN JobDesc j ON e.job_id = j.job_id;
+
+SELECT e.emp_id, e.first_name, s.basic_salary
+FROM Employee e
+JOIN Salary s ON e.emp_id = s.emp_id;
+
+SELECT e.emp_id, e.first_name, d.dept_name, j.job_title
+FROM Employee e
+JOIN Department d ON e.dept_id = d.dept_id
+JOIN JobDesc j ON e.job_id = j.job_id;
+
+
+-----------------------
+-- FILTER QUERIES
+-----------------------
+
+SELECT *
+FROM Employee
+WHERE hired_date > ?;
+
+SELECT e.first_name, s.basic_salary
+FROM Employee e
+JOIN Salary s ON e.emp_id = s.emp_id
+WHERE s.basic_salary > ?;
+
+SELECT e.emp_id, e.first_name, a.status
+FROM Employee e
+JOIN Attendance a ON e.emp_id = a.emp_id
+WHERE a.date = ?;
+
+
+-----------------------
+-- AGGREGATE QUERIES
+-----------------------
+
+SELECT COUNT(*) AS total_employees
+FROM Employee;
+
+SELECT AVG(basic_salary) AS average_salary
+FROM Salary;
+
+SELECT MAX(basic_salary) AS highest_salary
+FROM Salary;
+
+SELECT MIN(basic_salary) AS lowest_salary
+FROM Salary;
+
+SELECT SUM(basic_salary) AS total_salary
+FROM Salary;
