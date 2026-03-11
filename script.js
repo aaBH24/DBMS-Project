@@ -35,11 +35,11 @@ async function loadTableData(tabId) {
             return;
         }
 
-        // 3. Build the Bootstrap Table dynamically
+        // Build the Table dynamically
         let html = `<h2>${tabId.toUpperCase()} List</h2>`;
         html += `<table class="table table-striped table-dark mt-3"><thead><tr>`;
         
-        // Use keys from the first object to create Headers
+        // Use keys from the first object to create the headers
         Object.keys(data[0]).forEach(key => {
             html += `<th>${key.replace('_', ' ').toUpperCase()}</th>`;
         });
