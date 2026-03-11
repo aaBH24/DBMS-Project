@@ -17,8 +17,7 @@ async function showTab(e, tabId) {
         e.currentTarget.classList.add('active');
     }
 
-    // DATA LOGIC
-    // This calls the specific DQL routes in your server.js
+    // This calls the specific DQL routes in ther server file
     loadTableData(tabId);
 }
 
@@ -66,7 +65,7 @@ async function loadTableData(tabId) {
 
 // 3. Initial Load
 window.onload = () => {
-    
+
     // Passing a default null value upon load
     showTab(null, 'employee');
 };
