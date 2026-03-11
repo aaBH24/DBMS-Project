@@ -63,7 +63,7 @@ async function loadTableData(tabId) {
     }
 }
 
-// 3. Initial Load
+// Initial Site Load
 window.onload = () => {
 
     // Passing a default null value upon load
