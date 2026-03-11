@@ -1,5 +1,5 @@
 const express = require('express');
-const mysql = require('mysql2'); // Use 'pg' if you chose PostgreSQL
+const mysql = require('mysql2'); // Use 'pg' for choosing PostgreSQL
 const cors = require('cors');
 const path = require('path');
 
@@ -10,7 +10,7 @@ app.use(cors()); // Allows frontend/backend communication
 app.use(express.json()); // Parses JSON for DML (Insert/Update) queries
 app.use(express.static(path.join(__dirname, 'public'))); // Serves your index.html, styles.css, and script.js
 
-// 2. Database Connection 
+// Database Connection via Handshake
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root', 
@@ -26,7 +26,7 @@ db.connect((err) => {
     console.log('Connected to Database.');
 });
 
-// 3. DQL API ROUTES 
+// DQL API ROUTES 
 // Employee Tab 
 app.get('/api/employee', (req, res) => {
     const query = `
@@ -98,7 +98,7 @@ app.get('/api/attendance', (req, res) => {
     });
 });
 
-// 4. Start Server
+// Start Server
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
