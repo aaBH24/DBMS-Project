@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+    <title>Employee Record System</title>
+    <link rel="stylesheet" href="proj1.css"/>
+</head>
+<body>
+    <h1 class="main-heading">Employee Record System</h1>
+    <div class="front-page d-flex flex-column">
+        <h2 class="sub-heading">Welcome to the Employee Record System</h2>
+        <p class="paragraph">Click on any table below to view and manage records</p>
+        <div class="card-container d-flex flex-row justify-content-center">
+            <div class="card-item" onclick="showTab('employee')">
+                <img src="https://png.pngtree.com/png-clipart/20220102/original/pngtree-illustration-of-male-employee-wearing-a-neat-suit-flat-design-style-png-image_6990286.png" class="card-image"/>
+                <h2 class="card-heading">Employee</h2>
+                <p>Manage staff</p>
+            </div>
+
+            <div class="card-item" onclick="showTab('department')">
+                <img src="https://www.clipartmax.com/png/middle/275-2755135_office-icon-office-building-icon.png" class="card-image"/>
+                <h2 class="card-heading">Department</h2>
+                <p>Manage departments</p>
+            </div>
+
+            <div class="card-item" onclick="showTab('salary')">
+                <img src="https://png.pngtree.com/png-clipart/20250625/original/pngtree-salary-icon-flat-and-outline-design-style-financial-business-vector-illustration-png-image_21240349.png" class="card-image"/>
+                <h2 class="card-heading">Salary</h2>
+                <p> Manage Salary</p>
+
+            </div>
+            <div class="card-item" onclick="showTab('designation')">
+                <img src="https://png.pngtree.com/png-vector/20190425/ourmid/pngtree-vector-certificate-icon-png-image_991766.jpg" class="card-image"/>
+                <h2 class="card-heading">Designation</h2>
+                <p>Manage roles</p>
+
+            </div>
+            <div class="card-item" onclick="showTab('attendance')">
+                <img src="https://cdn-icons-png.flaticon.com/512/3589/3589030.png" class="card-image"/>
+                <h2 class="card-heading">Attendance</h2>
+                <p>Manage attendance</p>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
