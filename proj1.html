@@ -9,6 +9,7 @@
 </head>
 <body>
     <h1 class="main-heading">Employee Record System</h1>
+
     <div class="front-page d-flex flex-column">
         <h2 class="sub-heading">Welcome to the Employee Record System</h2>
         <p class="paragraph">Click on any table below to view and manage records</p>
@@ -18,32 +19,201 @@
                 <h2 class="card-heading">Employee</h2>
                 <p>Manage staff</p>
             </div>
-
             <div class="card-item" onclick="showTab('department')">
                 <img src="https://www.clipartmax.com/png/middle/275-2755135_office-icon-office-building-icon.png" class="card-image"/>
                 <h2 class="card-heading">Department</h2>
                 <p>Manage departments</p>
             </div>
-
             <div class="card-item" onclick="showTab('salary')">
                 <img src="https://png.pngtree.com/png-clipart/20250625/original/pngtree-salary-icon-flat-and-outline-design-style-financial-business-vector-illustration-png-image_21240349.png" class="card-image"/>
                 <h2 class="card-heading">Salary</h2>
-                <p> Manage Salary</p>
-
+                <p>Manage Salary</p>
             </div>
             <div class="card-item" onclick="showTab('designation')">
                 <img src="https://png.pngtree.com/png-vector/20190425/ourmid/pngtree-vector-certificate-icon-png-image_991766.jpg" class="card-image"/>
                 <h2 class="card-heading">Designation</h2>
                 <p>Manage roles</p>
-
             </div>
             <div class="card-item" onclick="showTab('attendance')">
                 <img src="https://cdn-icons-png.flaticon.com/512/3589/3589030.png" class="card-image"/>
                 <h2 class="card-heading">Attendance</h2>
                 <p>Manage attendance</p>
-
             </div>
         </div>
     </div>
+
+    <div id="employee" class="tab-content d-none">
+        <h2>Employee</h2>
+        <button class="button" onclick="goHome()">Home</button>
+        <table class="table-style">
+            <thead>
+                <tr>
+                    <th>Emp ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Dept ID</th>
+                    <th>Desig ID</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="employee-table"></tbody>
+        </table>
+
+        <div class="form-box">
+            <h3>Add Employee</h3>
+            <input id="employee-name" placeholder="Name"/>
+            <input id="employee-email" placeholder="Email"/>
+            <input id="employee-dept" placeholder="Dept ID"/>
+            <input id="employee-desig" placeholder="Desig ID"/>
+            <button class="add-btn" onclick="addEmployee()">Add</button>
+        </div>
+
+        <div class="form-box">
+            <h3>Update Employee</h3>
+            <input id="update-emp-id" placeholder="Emp ID"/>
+            <input id="update-emp-name" placeholder="New Name"/>
+            <input id="update-emp-email" placeholder="New Email"/>
+            <input id="update-emp-dept" placeholder="New Dept ID"/>
+            <input id="update-emp-desig" placeholder="New Desig ID"/>
+            <button class="add-btn" onclick="updateEmployee()">Update</button>
+        </div>
+
+        <div class="form-box">
+            <h3>JOIN — Employee + Department</h3>
+            <button class="add-btn" onclick="loadJoin()">Show JOIN</button>
+            <table class="table-style" style="margin-top:14px">
+                <thead>
+                    <tr>
+                        <th>Emp ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Department</th>
+                    </tr>
+                </thead>
+                <tbody id="join-table"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="department" class="tab-content d-none">
+        <h2>Department</h2>
+        <button class="button" onclick="goHome()">Home</button>
+        <table class="table-style">
+            <thead>
+                <tr>
+                    <th>Dept ID</th>
+                    <th>Dept Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="department-table"></tbody>
+        </table>
+        <div class="form-box">
+            <h3>Add Department</h3>
+            <input id="department-name" placeholder="Name"/>
+            <button class="add-btn" onclick="addDepartment()">Add</button>
+        </div>
+        <div class="form-box">
+            <h3>Update Department</h3>
+            <input id="update-dept-id" placeholder="Dept ID"/>
+            <input id="update-dept-name" placeholder="New Name"/>
+            <button class="add-btn" onclick="updateDepartment()">Update</button>
+        </div>
+    </div>
+
+    <div id="salary" class="tab-content d-none">
+        <h2>Salary</h2>
+        <button class="button" onclick="goHome()">Home</button>
+        <table class="table-style">
+            <thead>
+                <tr>
+                    <th>Sal ID</th>
+                    <th>Emp ID</th>
+                    <th>Amount</th>
+                    <th>Month</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="salary-table"></tbody>
+        </table>
+        <div class="form-box">
+            <h3>Add Salary</h3>
+            <input id="salary-employee" placeholder="Emp ID"/>
+            <input id="salary-amount" placeholder="Amount"/>
+            <input id="salary-month" placeholder="Month"/>
+            <button class="add-btn" onclick="addSalary()">Add</button>
+        </div>
+        <div class="form-box">
+            <h3>Update Salary</h3>
+            <input id="update-sal-id" placeholder="Sal ID"/>
+            <input id="update-sal-amount" placeholder="New Amount"/>
+            <input id="update-sal-month" placeholder="New Month"/>
+            <button class="add-btn" onclick="updateSalary()">Update</button>
+        </div>
+    </div>
+
+    <div id="designation" class="tab-content d-none">
+        <h2>Designation</h2>
+        <button class="button" onclick="goHome()">Home</button>
+        <table class="table-style">
+            <thead>
+                <tr>
+                    <th>Desig ID</th>
+                    <th>Desig Title</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="designation-table"></tbody>
+        </table>
+        <div class="form-box">
+            <h3>Add Designation</h3>
+            <input id="designation-title" placeholder="Title"/>
+            <button class="add-btn" onclick="addDesignation()">Add</button>
+        </div>
+        <div class="form-box">
+            <h3>Update Designation</h3>
+            <input id="update-desig-id" placeholder="Desig ID"/>
+            <input id="update-desig-title" placeholder="New Title"/>
+            <button class="add-btn" onclick="updateDesignation()">Update</button>
+        </div>
+    </div>
+
+    <div id="attendance" class="tab-content d-none">
+        <h2>Attendance</h2>
+        <button class="button" onclick="goHome()">Home</button>
+        <table class="table-style">
+            <thead>
+                <tr>
+                    <th>Att ID</th>
+                    <th>Emp ID</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="attendance-table"></tbody>
+        </table>
+        <div class="form-box">
+            <h3>Add Attendance</h3>
+            <input id="attendance-employee" placeholder="Emp ID"/>
+            <input id="attendance-date" type="date"/>
+            <select id="attendance-status">
+                <option value="Present">Present</option>
+                <option value="Absent">Absent</option>
+            </select>
+            <button class="add-btn" onclick="addAttendance()">Add</button>
+        </div>
+        <div class="form-box">
+            <h3>Update Attendance</h3>
+            <input id="update-att-id" placeholder="Att ID"/>
+            <select id="update-att-status">
+                <option value="Present">Present</option>
+                <option value="Absent">Absent</option>
+            </select>
+            <button class="add-btn" onclick="updateAttendance()">Update</button>
+        </div>
+    </div>
+
+    <script src="proj1.js"></script>
 </body>
 </html>
